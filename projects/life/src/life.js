@@ -116,17 +116,38 @@ class Life {
         const neighbors = checkAliveNeighbors(row, col);
         const currentState = currentBuffer[row][col];
         let futureState = currentState;
-          if (neighbors < 2 || neighbors > 3) {
+
+        //alive rules
+        if (currentBuffer[row][col] === 1) {
+          if (neighbors === 3 || neighbors === 4 || neighbors === 6 || neighbors === 7 || neighbors === 8) {
+            backBuffer[row][col] = 1;
+          } else {
             backBuffer[row][col] = 0;
           }
-      
-          if (neighbors === 2) {
-            backBuffer[row][col] = currentBuffer[row][col] === 1 ? 1 : 0;
+        }
+
+        //dead rules
+
+        if (currentBuffer[row][col] === 0) {
+          if (neighbors === 3 || neighbors === 6 || neighbors === 7 || neighbors === 8) {
+            backBuffer[row][col] = 1;
+          } else {
+            backBuffer[row][col] = 0;
           }
+        }
+
+
+          // if (neighbors < 2 || neighbors > 3) {
+          //   backBuffer[row][col] = 0;
+          // }
       
-          if (neighbors === 3) {
-            backBuffer[row][col] = 1
-          }
+          // if (neighbors === 2) {
+          //   backBuffer[row][col] = currentBuffer[row][col] === 1 ? 1 : 0;
+          // }
+      
+          // if (neighbors === 3) {
+          //   backBuffer[row][col] = 1
+          // }
       }
     }
 
