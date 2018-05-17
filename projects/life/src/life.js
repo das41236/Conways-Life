@@ -210,7 +210,7 @@ class Life {
           //console.log('found alive cell');
           // do alive rules
           //console.log(totalNeighbors);
-          if (totalNeighbors > 3 || totalNeighbors < 2) {
+          if (totalNeighbors > 4 || totalNeighbors < 2) {
             //console.log('and killed it');
             backBuffer[row][col] = 0;
           } else {
@@ -218,7 +218,7 @@ class Life {
           }
         } else {
           // do dead rules
-          if (totalNeighbors === 3) {
+          if (totalNeighbors === 3 || totalNeighbors === 6) {
             backBuffer[row][col] = dominantColor;
           } else {
             backBuffer[row][col] = currentBuffer[row][col];
